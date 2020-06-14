@@ -74,6 +74,6 @@ if __name__ == '__main__':
     iheight = bheight * 1.8;  # 버튼의 간격
     뽑기표 = collections.Counter()
 
-    PickTokenASC()
+    PickToken()
     ex = MyQpp()
     sys.exit(app.exec_())
