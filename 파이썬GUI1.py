@@ -4,31 +4,31 @@ from PyQt5.QtGui import QFont
 
 
 class MyQpp(QWidget):
+    # global bwidth, bheight, iwidth, iheight
     def __init__(self):
         super().__init__()
         self.initUI()
 
     def initUI(self):
-        label1 = QLabel('Label1', self)
-        label1.move(20, 20)
+        좌석 = [0 for _ in range(21)]
+        for i in range(1, 6+1):
+            좌석[i] = QPushButton(f'번호 {i}', self)
+            좌석[i].resize(bwidth, bheight)
+            좌석[i].move(i*bwidth, 0)
 
-        label2 = QLabel('Label2', self)
-        label2.move(20, 60)
-
-        btn1 = QPushButton('버튼1', self)
-        btn1.move(50, 0)
-        btn1.resize(btn1.sizeHint())  #버튼을 적절한 크기로 설정
-        btn2 = QPushButton('버튼2', self)
-        btn2.move(50, 100)
-        btn2.resize(btn2.sizeHint())  # 버튼을 적절한 크기로 설정
 
         self.setWindowTitle('absolute 포지션')
-        self.setGeometry(300, 300, 400, 200)
+        self.setGeometry(rec.width()//4, rec.height()//4, rec.width()//2, rec.height()//2)
         self.show()
 
 
 if __name__ == '__main__':
+
     app = QApplication(sys.argv)
+    rec = app.desktop().geometry()      #모니터 크기 구하기
+    bwidth = rec.width()//20; bheight = rec.height()//20;      #버튼의 크기
+    iwidth = bwidth//2; iheight = bheight;     #버튼의 간격
+
     ex = MyQpp()
     sys.exit(app.exec_())
 
