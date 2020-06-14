@@ -4,7 +4,7 @@ from PyQt5.QtGui import QFont
 
 
 class MyQpp(QWidget):
-    # global bwidth, bheight, iwidth, iheight
+    # global bwidth, bheight, iwidth, iheight, rec
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -14,7 +14,7 @@ class MyQpp(QWidget):
         for i in range(1, 6+1):
             좌석[i] = QPushButton(f'번호 {i}', self)
             좌석[i].resize(bwidth, bheight)
-            좌석[i].move(i*bwidth, 0)
+            좌석[i].move(i*bwidth + (i-1)//2*bwidth//3, 0)
 
 
         self.setWindowTitle('absolute 포지션')
