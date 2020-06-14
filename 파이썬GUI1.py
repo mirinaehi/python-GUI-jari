@@ -1,6 +1,15 @@
-import sys
+import sys, collections, random
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from functools import partial
+
+
+def PickToken():
+    for i in range(1, 20+1):
+        while True:
+            temp = random.randint(1, 20)
+            if 뽑기표[temp] ==0:
+                뽑기표[temp] +=i
+                break
 
 
 class MyQpp(QWidget):
@@ -13,7 +22,7 @@ class MyQpp(QWidget):
 
     def initUI(self):
         for i in range(1, 20 + 1):
-            self.좌석[i] = QPushButton(f'번호 {i}', self)
+            self.좌석[i] = QPushButton(f'번호 {뽑기표[i]}', self)
             self.좌석[i].resize(bwidth, bheight)
             self.좌석[i].move(iwidth + (i - 1) % 6 * bwidth + (i - 1) % 6 // 2 * iwidth, 20 + (i - 1) // 6 * iheight)
             # partial : 함수와 argument를 넘기기 위해 사용
@@ -48,6 +57,8 @@ if __name__ == '__main__':
     bheight = rec.height() // 20;  # 버튼의 크기
     iwidth = bwidth // 2;
     iheight = bheight * 1.8;  # 버튼의 간격
+    뽑기표 = collections.Counter()
 
+    PickToken()
     ex = MyQpp()
     sys.exit(app.exec_())
