@@ -24,9 +24,20 @@ class MyQpp(QWidget):
         self.show()
 
     def on_click(self, i):
+        x축 = self.좌석[i].x()
+
+        #맨 끝 위치 찾기
+        for m in range(i, 20+1, 6): pass
+        for n in range(m, 6, -6):
+            for p in range(n-6, 0, -6):
+                if self.좌석[p].isEnabled():
+                    self.좌석[n].move(x축, self.좌석[p].y())
+                    break
+                self.좌석[n].move(x축, 20)
+
         self.좌석[i].setEnabled(False)
         self.좌석[i].move(9999, 9999)
-        # for m in range(i+6, 20+1, 6):
+
 
 
 # main 코드
