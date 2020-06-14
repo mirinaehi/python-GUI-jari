@@ -8,8 +8,7 @@ class MyQpp(QWidget):
 
     def initUI(self):
         self.setWindowTitle('첫번째 앱')
-        self.move(300, 300)
-        self.resize(400, 200)
+        self.setGeometry(300, 300, 400, 200)
         self.show()
 
 if __name__ == '__main__':
