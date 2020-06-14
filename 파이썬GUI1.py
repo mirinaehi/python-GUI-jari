@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel
 from PyQt5.QtGui import QFont
 
 
@@ -9,17 +9,23 @@ class MyQpp(QWidget):
         self.initUI()
 
     def initUI(self):
-        QToolTip.setFont(QFont('SansSerif', 10))
-        self.setToolTip('This is a <b>전체화면</b> widget')
+        label1 = QLabel('Label1', self)
+        label1.move(20, 20)
 
-        btn = QPushButton('버튼', self)
-        btn.setToolTip('This is a <b>버튼</b> widget')
-        btn.move(50, 50)
-        btn.resize(btn.sizeHint())
+        label2 = QLabel('Label2', self)
+        label2.move(20, 60)
 
-        self.setWindowTitle('버튼만들기')
+        btn1 = QPushButton('버튼1', self)
+        btn1.move(50, 0)
+        btn1.resize(btn1.sizeHint())  #버튼을 적절한 크기로 설정
+        btn2 = QPushButton('버튼2', self)
+        btn2.move(50, 100)
+        btn2.resize(btn2.sizeHint())  # 버튼을 적절한 크기로 설정
+
+        self.setWindowTitle('absolute 포지션')
         self.setGeometry(300, 300, 400, 200)
         self.show()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
