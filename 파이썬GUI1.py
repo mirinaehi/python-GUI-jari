@@ -28,6 +28,7 @@ class MyQpp(QWidget):
         for i in range(1, 18 + 1):
             self.좌석[i] = QPushButton(f'번호 {뽑기표[i]}', self)
             self.좌석[i].resize(bwidth, bheight)
+            self.좌석[i].setStyleSheet('QPushButton {font-size:30px; font:bold}')
             self.좌석[i].move(iwidth + (i - 1) % 6 * bwidth + (i - 1) % 6 // 2 * iwidth, 20 + (i - 1) // 6 * iheight)
             # partial : 함수와 argument를 넘기기 위해 사용
             self.좌석[i].clicked.connect(partial(self.on_click, i))
@@ -35,6 +36,7 @@ class MyQpp(QWidget):
         for i in range(23, 24+1):
             self.좌석[i] = QPushButton(f'번호 {뽑기표[i-4]}', self)
             self.좌석[i].resize(bwidth, bheight)
+            self.좌석[i].setStyleSheet('QPushButton {font-size:30px; font:bold}')
             self.좌석[i].move(iwidth + (i - 1) % 6 * bwidth + (i - 1) % 6 // 2 * iwidth, 20 + (i - 1) // 6 * iheight)
             # partial : 함수와 argument를 넘기기 위해 사용
             self.좌석[i].clicked.connect(partial(self.on_click, i))
